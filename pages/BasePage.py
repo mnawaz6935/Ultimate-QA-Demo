@@ -2,6 +2,7 @@ import logging
 import time
 from logging import Logger
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -55,7 +56,7 @@ class BasePage:
 
     def is_element_selected(self, by_locator):
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
-        is_selected = self.driver.execute_script("arguments[0].checked;",element)
+        is_selected = self.driver.execute_script("return arguments[0].checked;",element)
         logging.info(f'Checkbox checked : {is_selected}')
         return is_selected
 
@@ -89,8 +90,7 @@ class BasePage:
         return elements
 
     def wait(self, seconds=3):
-        pass
-        # time.sleep(seconds)
+        time.sleep(seconds)
 
     def move_to_element(self, locator):
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))

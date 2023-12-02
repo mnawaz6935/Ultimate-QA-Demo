@@ -11,9 +11,9 @@ class LoginPage(LoginPageElements):
         try:
             self.click_element(self.login_button)
         except:
-            pass
-        self.click_element(self.email_input_field_on_login_page)
-        self.click_element(self.login_button)
+            self.click_element(self.email_input_field_on_login_page)
+            self.click_element(self.login_button)
+        time.sleep(10)
 
     def enter_email_input_field_on_login_page(self, email):
         self.input_element(self.email_input_field_on_login_page, email)

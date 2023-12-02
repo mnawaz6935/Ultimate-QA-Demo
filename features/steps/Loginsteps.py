@@ -1,6 +1,7 @@
 from allure_commons._allure import attach
 from allure_commons.types import AttachmentType
 from behave import *
+from faker import Faker
 from selenium.webdriver.common.by import By
 import random
 import string
@@ -120,51 +121,6 @@ def verify_login_button_is_working(context):
         context.driver.close()
         assert False, "Test Failed on Verify that the password field is displaying a value"
 
-@then(u'Verify that the password value "{value}" is unmaskable')
-def verify_password_field_unmaskable_is_displayed(context, value):
-    try:
-        context.loginPage.verify_password_field_unmaskable_is_displayed(value)
-    except Exception as e:
-        attach(context.driver.get_screenshot_as_png(), name=str(str(e)+"Test Failed on Verify password field is unmaskable"),
-               attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, e
-    except:
-        attach(context.driver.get_screenshot_as_png(), name=str("Test Failed on Verify password field is unmaskable"),
-               attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, "Test Failed on Verify password field is unmaskable"
-
-@then(u'click on password mask button')
-def click_on_password_mask_button(context):
-    try:
-        context.loginPage.click_Password_mask_button()
-    except Exception as e:
-        attach(context.driver.get_screenshot_as_png(), name=str(str(e) + "Test Failed on click on password mask button"),
-                attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, e
-    except:
-        attach(context.driver.get_screenshot_as_png(), name=str("Test Failed on click on password mask button"),
-                attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, "Test Failed on click on password mask button"
-
-@then(u'Verify that the password field value "{value}" can be masked')
-def verify_password_field_unmaskable_is_displayed(context, value):
-    try:
-        context.loginPage.verify_password_field_maskable_is_displayed(value)
-    except Exception as e:
-        attach(context.driver.get_screenshot_as_png(), name=str(str(e)+"Test Failed on Verify that the password field is maskable"),
-               attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, e
-    except:
-        attach(context.driver.get_screenshot_as_png(), name=str("Test Failed on Verify that the password field is maskable"),
-               attachment_type=AttachmentType.PNG)
-        context.driver.close()
-        assert False, "Test Failed on Verify that the password field is maskable"
-
 @then(u'click on remember me checkbox and verify remember me checkbox is checked')
 def click_on_remember_me_checkbox_verify_remember_me_checkbox_is_checked(context):
     try:
@@ -273,3 +229,10 @@ def verify_Create_an_Account_Page_is_displayed(context):
 @then(u'Close the browser')
 def step_impl(context):
     context.driver.close()
+
+
+@then("Login with invalid email and password")
+def step_impl(context):
+    context.loginPage.enter_email_input_field_on_login_page(Faker().email())
+    context.loginPage.enter_password_input_field_on_login_page(TestData.password)
+    context.loginPage.click_login_button()

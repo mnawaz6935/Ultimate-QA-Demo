@@ -37,7 +37,12 @@ Feature: Validate the login feature
       Then Verify that the create an account page is displayed
       Then Close the browser
 
-  Scenario: TC_08 Verify that Login button is working
-      Then Login with valid email and password
+  Scenario: TC_08 Verify that user is not able to login with valid credentials
+      Then Login with invalid email and password
       Then Verify that the home page is displayed
       Then Close the browser
+
+  Scenario: TC_09 Verify that user is able to login with valid credentials
+    Then Login with valid email and password
+    Then Verify that the home page is displayed
+    Then Close the browser
