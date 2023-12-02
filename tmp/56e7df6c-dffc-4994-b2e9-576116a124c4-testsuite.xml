@@ -1,0 +1,34 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1625150617465" stop="1625150617465">
+  <description>Unloadable or unexecutable test.
+
+    A Failure case is placed in a test suite to indicate the presence of a
+    test that could not be loaded or executed. A common example is a test
+    module that fails to import.
+    
+    </description>
+  <name>nose.failure</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1625150617465" status="broken" stop="1625150617465">
+      <name></name>
+      <failure>
+        <message>ValueError: Unable to load tests from file C:\Users\USER\Documents\dandy_automation\features\HomePage.feature</message>
+        <stack-trace>Traceback (most recent call last):
+  File "c:\users\user\appdata\local\programs\python\python39\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+  File "c:\users\user\appdata\local\programs\python\python39\lib\unittest\case.py", line 593, in run
+    self._callTestMethod(testMethod)
+  File "c:\users\user\appdata\local\programs\python\python39\lib\unittest\case.py", line 550, in _callTestMethod
+    method()
+  File "c:\users\user\appdata\local\programs\python\python39\lib\site-packages\nose\failure.py", line 39, in runTest
+    raise self.exc_val.with_traceback(self.tb)
+  File "c:\users\user\appdata\local\programs\python\python39\lib\site-packages\nose\loader.py", line 233, in loadTestsFromFile
+    raise ValueError("Unable to load tests from file %s"
+ValueError: Unable to load tests from file C:\Users\USER\Documents\dandy_automation\features\HomePage.feature</stack-trace>
+      </failure>
+      <attachments/>
+      <labels/>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>
